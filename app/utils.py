@@ -33,7 +33,7 @@ def _display_detected_frames(conf, model, st_count, st_frame, image):
                    )
 
 
-@st.cache_resource
+# @st.cache_resource
 def load_model(model_path):
     """
     Loads a YOLO object detection model from the specified model_path.
