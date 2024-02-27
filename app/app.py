@@ -44,8 +44,8 @@ source_selectbox = st.sidebar.selectbox(
 source_img = None
 if source_selectbox == "Video": # Video
     infer_uploaded_video(conf=0.5, model=model)
-# elif source_selectbox == "Image": # Image
-#     infer_uploaded_image(confidence, model)
+elif source_selectbox == "Image": # Image
+    infer_uploaded_image(conf=0.5, model=model)
 elif source_selectbox == "Webcam": # Webcam
     # infer_uploaded_webcam(confidence, model)
     play_webcam(conf=0.5, model=model)
