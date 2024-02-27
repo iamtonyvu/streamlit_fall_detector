@@ -33,19 +33,19 @@ def _display_detected_frames(conf, model, st_count, st_frame, image):
                    )
 
 
-# @st.cache_resource
-def load_model(model_path):
-    """
-    Loads a YOLO object detection model from the specified model_path.
+# # @st.cache_resource
+# def load_model(model_path):
+#     """
+#     Loads a YOLO object detection model from the specified model_path.
 
-    Parameters:
-        model_path (str): The path to the YOLO model file.
+#     Parameters:
+#         model_path (str): The path to the YOLO model file.
 
-    Returns:
-        A YOLO object detection model.
-    """
-    model = YOLO(model_path)
-    return model
+#     Returns:
+#         A YOLO object detection model.
+#     """
+#     model = YOLO(model_path)
+#     return model
 
 
 def infer_uploaded_image(conf, model):
