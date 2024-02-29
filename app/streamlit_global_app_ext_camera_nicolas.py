@@ -28,8 +28,8 @@ st.image(title_image, use_column_width=True)
 
 # sidebar
 st.sidebar.header("Model Config")
-# model = YOLO('yolov8s.pt')
-model = YOLO('best.pt')
+model = YOLO('yolov8n.pt')
+model = YOLO('nicolas_best.pt')
 
 # image/video options
 st.sidebar.header("Input Config")
