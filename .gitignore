@@ -2,3 +2,5 @@ app/streamlit_local_app_int_camera.py
 app/streamlit_local_app_ext_camera.py
 
 **/.DS_Store
+
+app/__pycache__
