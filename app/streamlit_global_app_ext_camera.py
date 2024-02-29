@@ -1,7 +1,7 @@
 from pathlib import Path
 import streamlit as st
 from ultralytics import YOLO
-from utils import infer_uploaded_image, infer_uploaded_video, infer_uploaded_webcam, play_webcam
+from utils_ext_camera import infer_uploaded_image, infer_uploaded_video, infer_uploaded_webcam, play_webcam
 from PIL import Image
 
 # setting page layout

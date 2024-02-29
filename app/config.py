@@ -3,7 +3,7 @@
 """
 -------------------------------------------------
    @File Name:     config.py
-   @Author:        Luyao.zhang
+   @Author:        Luyao.zhang  #friend of Tony kakaka thank you Zhang
    @Date:          2023/5/16
    @Description: configuration file
 -------------------------------------------------

@@ -10,6 +10,7 @@ import av
 import base64
 import time
 
+
 def _display_detected_frames(conf, model, st_count, st_frame, image):
     """
     Display the detected objects on a video frame using the YOLOv8 model.
@@ -135,7 +136,16 @@ def infer_uploaded_video(conf, model):
                     st.error(f"Error loading video: {e}")
 
 
-def infer_uploaded_webcam(conf, model):
+
+
+def process_frame(frame):   #TONY asked ChatGPT to lower resolution of input video
+    # Resize the frame to lower the resolution
+    frame = cv2.resize(frame, (360, 200))  # Example: Resize to 640x480
+    # Further processing can be done here (e.g., adjusting encoding, further reducing quality)
+    return frame
+
+
+def infer_uploaded_webcam(conf, model):      # Stream with local camera
     """
     Execute inference for webcam (Plays a webcam stream on local).
     :param conf: Confidence of YOLOv8 model
@@ -146,13 +156,15 @@ def infer_uploaded_webcam(conf, model):
         flag = st.button(
             label="Stop running"
         )
-        vid_cap = cv2.VideoCapture(0)  # local camera
+        vid_cap = cv2.VideoCapture(1)  # local camera
         st_count = st.empty()
         st_frame = st.empty()
 
         while not flag:
             while vid_cap.isOpened():
                 success, image = vid_cap.read()
+                # image = process_frame(image)  #Tony asked ChatGPT
+                # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  #Tony asked ChatGPT
                 if success:
                     _display_detected_frames(
                         conf,
@@ -167,7 +179,7 @@ def infer_uploaded_webcam(conf, model):
     except Exception as e:
         st.error(f"Error loading video: {str(e)}")
 
-def play_webcam(conf, model):
+def play_webcam(conf, model):   # Stream on cloud (global)
     """
     Plays a webcam stream on cloud. Detects Objects in real-time using the YOLO object detection model.
 
