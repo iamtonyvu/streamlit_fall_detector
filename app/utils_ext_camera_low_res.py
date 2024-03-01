@@ -191,10 +191,14 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
     """
     # st.sidebar.title("Webcam Object Detection")
 
+    st.text("External-camera lower solution")
+
     def video_frame_callback(frame: av.VideoFrame) -> av.VideoFrame:
         image = frame.to_ndarray(format="bgr24")
 
         orig_h, orig_w = image.shape[0:2]
+
+        print(f"Current Frame Resolution: Width = {orig_w}, Height = {orig_h}")
 
         width = 720  # Set the desired width for processing
 
@@ -221,8 +225,8 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
         rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
         media_stream_constraints={
                                     "video": {
-                                        "width": {"max": 640},
-                                        "height": {"max": 480}
+                                        "width": {"max": 360},
+                                        "height": {"max": 270}
                                     },
                                     "audio": False
                                 },
