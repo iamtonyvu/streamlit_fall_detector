@@ -193,11 +193,11 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
 
     st.text("Hahahhahaha")
     st.write("1234354356345645")
-    # frame: av.VideoFrame
-    # image = frame.to_ndarray(format="bgr24")
-    # orig_h, orig_w = image.shape[0:2]
-    # # Print the resolution to the console (or use Streamlit's text function to display it in the app)
-    # st.text(f"Current Frame Resolution: Width = {orig_w}, Height = {orig_h}")
+    frame: av.VideoFrame
+    image = frame.to_ndarray(format="bgr24")
+    orig_h, orig_w = image.shape[0:2]
+    # Print the resolution to the console (or use Streamlit's text function to display it in the app)
+    st.text(f"Current Frame Resolution: Width = {orig_w}, Height = {orig_h}")
 
     def video_frame_callback(frame: av.VideoFrame) -> av.VideoFrame:
         image = frame.to_ndarray(format="bgr24")
