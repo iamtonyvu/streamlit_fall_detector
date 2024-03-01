@@ -145,7 +145,7 @@ def process_frame(frame):   #TONY asked ChatGPT to lower resolution of input vid
     return frame
 
 
-def infer_uploaded_webcam(conf, model):      # Stream with local camera
+def infer_uploaded_webcam(conf, model):      #Streamlit Local
     """
     Execute inference for webcam (Plays a webcam stream on local).
     :param conf: Confidence of YOLOv8 model
@@ -179,7 +179,7 @@ def infer_uploaded_webcam(conf, model):      # Stream with local camera
     except Exception as e:
         st.error(f"Error loading video: {str(e)}")
 
-def play_webcam(conf, model):   # Stream on cloud (global)
+def play_webcam(conf, model):   # Streamlit on cloud (global)
     """
     Plays a webcam stream on cloud. Detects Objects in real-time using the YOLO object detection model.
 
