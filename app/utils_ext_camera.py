@@ -163,7 +163,7 @@ def infer_uploaded_webcam(conf, model):      #Streamlit Local
         while not flag:
             while vid_cap.isOpened():
                 success, image = vid_cap.read()
-                image = process_frame(image)  #Tony asked ChatGPT
+                image = process_frame(image)  #TONY asked ChatGPT to lower resolution of input video
                 # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  #Tony asked ChatGPT
                 if success:
                     _display_detected_frames(
@@ -196,6 +196,10 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
 
 
         orig_h, orig_w = image.shape[0:2]
+
+        # Print the resolution to the console (or use Streamlit's text function to display it in the app)
+        print(f"Current Frame Resolution: Width = {orig_w}, Height = {orig_h}")
+
         width = 720  # Set the desired width for processing
 
         # cv2.resize used in a forked thread may cause memory leaks

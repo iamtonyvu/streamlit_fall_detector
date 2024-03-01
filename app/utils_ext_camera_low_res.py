@@ -163,7 +163,7 @@ def infer_uploaded_webcam(conf, model):      #Streamlit Local
         while not flag:
             while vid_cap.isOpened():
                 success, image = vid_cap.read()
-                image = process_frame(image)  #Tony asked ChatGPT
+                image = process_frame(image)  #TONY asked ChatGPT to lower resolution of input video
                 # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  #Tony asked ChatGPT
                 if success:
                     _display_detected_frames(
