@@ -191,8 +191,8 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
     """
     # st.sidebar.title("Webcam Object Detection")
 
-    st.text("Hahahhahaha")
-    st.write("1234354356345645")
+    st.text("External-camera original solution")
+
 
     def video_frame_callback(frame: av.VideoFrame) -> av.VideoFrame:
         image = frame.to_ndarray(format="bgr24")
