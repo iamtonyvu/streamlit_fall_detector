@@ -191,6 +191,7 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
     """
     # st.sidebar.title("Webcam Object Detection")
 
+    st.text("Hahahhah432423123")
     st.text("External-camera original solution")
 
 
