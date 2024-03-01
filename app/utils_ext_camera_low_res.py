@@ -196,9 +196,6 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
 
         orig_h, orig_w = image.shape[0:2]
 
-        # Print the resolution to the console (or use Streamlit's text function to display it in the app)
-        st.text(f"Current Frame Resolution: Width = {orig_w}, Height = {orig_h}")
-
         width = 720  # Set the desired width for processing
 
         # cv2.resize used in a forked thread may cause memory leaks

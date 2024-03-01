@@ -151,6 +151,8 @@ def infer_uploaded_webcam(conf, model): #Streamlit Local
     :param model: An instance of the `YOLOv8` class containing the YOLOv8 model.
     :return: None
     """
+    st.text("Hahahhahaha")
+    st.write("1234354356345645")
     try:
         flag = st.button(
             label="Stop running"
@@ -158,6 +160,8 @@ def infer_uploaded_webcam(conf, model): #Streamlit Local
         vid_cap = cv2.VideoCapture(0)  # local camera
         st_count = st.empty()
         st_frame = st.empty()
+        st.text("Hahahhahaha123")
+        st.write("dsadasdas1234354356345645")
 
         while not flag:
             while vid_cap.isOpened():
@@ -194,9 +198,6 @@ def play_webcam(conf, model):    # Streamlit on cloud (global)
         image = frame.to_ndarray(format="bgr24")
 
         orig_h, orig_w = image.shape[0:2]
-
-        # Print the resolution to the console (or use Streamlit's text function to display it in the app)
-        st.text(f"Current Frame Resolution: Width = {orig_w}, Height = {orig_h}")
 
         width = 720  # Set the desired width for processing
 
