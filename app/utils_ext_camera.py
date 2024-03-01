@@ -198,6 +198,7 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
 
         # Print the resolution to the console (or use Streamlit's text function to display it in the app)
         st.text(f"Current Frame Resolution: Width = {orig_w}, Height = {orig_h}")
+        st.write(f"Current Frame Resolution: Width = {orig_w}, Height = {orig_h}")
 
         width = 720  # Set the desired width for processing
 
