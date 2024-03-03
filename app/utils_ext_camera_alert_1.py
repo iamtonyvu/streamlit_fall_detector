@@ -5,9 +5,6 @@ from PIL import Image
 import tempfile
 from config import *
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, webrtc_streamer, WebRtcMode, RTCConfiguration
-import numpy as np
-import av
-import base64
 import time
 import torch
 from torchvision.transforms import functional as F
@@ -21,7 +18,7 @@ def load_model(model_path):
 
 def detect(image):
     # Load pre-trained model
-    model = load_model('yolov8_weights.pth')
+    model = load_model('best.pt')
 
     # Preprocess image
     img = F.to_tensor(image)
