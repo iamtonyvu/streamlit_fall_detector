@@ -49,6 +49,6 @@ elif source_selectbox == "Image": # Image
     infer_uploaded_image(conf=0.5, model=model)
 elif source_selectbox == "Webcam": # Webcam
     # infer_uploaded_webcam(confidence, model)
-    play_webcam_alert(conf=0.5, model=model)
+    play_webcam_alert()
 else:
     st.error("Currently only 'Image' and 'Video' source are implemented")
