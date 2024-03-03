@@ -28,6 +28,8 @@ def detect(image):
     with torch.no_grad():
         predictions = model(img)
 
+    if predictions is None or len(predictions) == 0:
+        return img, []
     # Postprocess predictions
     boxes, scores, classes = [], [], []
     for pred in predictions:
