@@ -216,8 +216,10 @@ def play_webcam_alert_2(conf, model):   # Streamlit on cloud (global)
         if model is not None:
             # Perform object detection using YOLO model
             res = model.predict(processed_image, conf=conf)
+            # Plot the detected objects on the video frame
+            res_plotted = res[0].plot()
+
             current_time = time.time()
-            # print(f'resboxes: {res.boxes}')
             # Iterate through detections and update detection_history
             for det in res[0].pred[0]:
                 class_id = int(det[5])
@@ -234,10 +236,6 @@ def play_webcam_alert_2(conf, model):   # Streamlit on cloud (global)
                 # Check time difference condition
                 if any(abs(fall_det[1] - stand_det[1]) <= 2 for fall_det in fall_detections for stand_det in standing_detections):
                     st.warning("Real fall detected!")
-
-            # Plot the detected objects on the video frame
-            res_plotted = res[0].plot()
-            # print(f'resplotted: {res_plotted}')
 
 
         return av.VideoFrame.from_ndarray(res_plotted, format="bgr24")
