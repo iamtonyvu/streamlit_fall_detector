@@ -4,7 +4,7 @@ import cv2
 from PIL import Image
 import tempfile
 from config import *
-from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, webrtc_streamer, WebRtcMode, RTCConfiguration
+from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, WebRtcMode, RTCConfiguration
 import numpy as np
 import av
 import base64
