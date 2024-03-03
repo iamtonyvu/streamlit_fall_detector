@@ -4,6 +4,7 @@ from ultralytics import YOLO
 from utils_ext_camera import infer_uploaded_image, infer_uploaded_video, infer_uploaded_webcam, play_webcam
 from PIL import Image
 from utils_ext_camera_alert_1 import play_webcam_alert
+from utils_ext_camera_alert_2 import play_webcam_alert_2
 
 # setting page layout
 # st.set_page_config(
@@ -49,6 +50,6 @@ elif source_selectbox == "Image": # Image
     infer_uploaded_image(conf=0.5, model=model)
 elif source_selectbox == "Webcam": # Webcam
     # infer_uploaded_webcam(confidence, model)
-    play_webcam_alert()
+    play_webcam_alert_2(conf=0.5, model=model)
 else:
     st.error("Currently only 'Image' and 'Video' source are implemented")
