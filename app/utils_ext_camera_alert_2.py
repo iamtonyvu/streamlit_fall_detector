@@ -221,14 +221,14 @@ def play_webcam_alert_2(conf, model):   # Streamlit on cloud (global)
             # Iterate through detections and update detection_history
             for det in res[0].pred[0]:
                 class_id = int(det[5])
-                detection_history.append((class_id, current_time))
+                st.session_state.detection_history.append((class_id, current_time))
 
             # Keep only recent detections (e.g., last 5 seconds)
-            detection_history = [det for det in detection_history if current_time - det[1] <= 5]
+            st.session_state.detection_history = [det for det in st.session_state.detection_history if current_time - det[1] <= 5]
 
             # Check for "fall" and "standing" within 2 seconds
-            fall_detections = [det for det in detection_history if det[0] == 0]
-            standing_detections = [det for det in detection_history if det[0] == 1]
+            fall_detections = [det for det in st.session_state.detection_history if det[0] == 0]
+            standing_detections = [det for det in st.session_state.detection_history if det[0] == 1]
 
             if fall_detections and standing_detections:
                 # Check time difference condition

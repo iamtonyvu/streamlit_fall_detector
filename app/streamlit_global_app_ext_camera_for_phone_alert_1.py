@@ -21,6 +21,9 @@ st.set_page_config(
 
     initial_sidebar_state="expanded"
 )
+# Initialize detection history in session state
+if 'detection_history' not in st.session_state:
+    st.session_state.detection_history = []
 
 # Load the image for the title
 title_image = Image.open("camera_icon.png")
