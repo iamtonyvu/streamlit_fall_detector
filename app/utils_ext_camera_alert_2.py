@@ -182,7 +182,9 @@ def infer_uploaded_webcam(conf, model):      #Streamlit Local
     except Exception as e:
         st.error(f"Error loading video: {str(e)}")
 
-def play_webcam(conf, model):   # Streamlit on cloud (global)
+detection_history = []
+
+def play_webcam_alert_2(conf, model):   # Streamlit on cloud (global)
     """
     Plays a webcam stream on cloud. Detects Objects in real-time using the YOLO object detection model.
 
@@ -199,6 +201,7 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
 
 
     def video_frame_callback(frame: av.VideoFrame) -> av.VideoFrame:
+        global detection_history
         image = frame.to_ndarray(format="bgr24")
 
         orig_h, orig_w = image.shape[0:2]
@@ -213,7 +216,24 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
         if model is not None:
             # Perform object detection using YOLO model
             res = model.predict(processed_image, conf=conf)
+            current_time = time.time()
             # print(f'resboxes: {res.boxes}')
+            # Iterate through detections and update detection_history
+            for det in res[0].pred[0]:
+                class_id = int(det[5])
+                detection_history.append((class_id, current_time))
+
+            # Keep only recent detections (e.g., last 5 seconds)
+            detection_history = [det for det in detection_history if current_time - det[1] <= 5]
+
+            # Check for "fall" and "standing" within 2 seconds
+            fall_detections = [det for det in detection_history if det[0] == 0]
+            standing_detections = [det for det in detection_history if det[0] == 1]
+
+            if fall_detections and standing_detections:
+                # Check time difference condition
+                if any(abs(fall_det[1] - stand_det[1]) <= 2 for fall_det in fall_detections for stand_det in standing_detections):
+                    st.warning("Real fall detected!")
 
             # Plot the detected objects on the video frame
             res_plotted = res[0].plot()
@@ -230,10 +250,3 @@ def play_webcam(conf, model):   # Streamlit on cloud (global)
         rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
         media_stream_constraints={"video": True, "audio": False},
     )
-
-
-#I rewriting play_webcam function to use the new webrtc_streamer function from streamlit-webrtc to stream the webcam on Streamlit Cloud.
-#I will also use the YOLOv8 model to detect objects in real-time.
-#I will also display the detected objects on the video frame.
-#I will also need to take time and information of each frame to write a code to show a message with the text "Real fall" when a falling and a standing are detected within 2 seconds when I use a live webcam on Streamlit cloud.
-def play_webca
