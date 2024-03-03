@@ -152,7 +152,7 @@ def infer_uploaded_webcam(conf, model): #Streamlit Local
     :return: None
     """
     st.text("Hahahhahaha")
-    st.write("1234354356345645")
+    st.write("Local Internal Camera")
     try:
         flag = st.button(
             label="Stop running"
@@ -160,8 +160,6 @@ def infer_uploaded_webcam(conf, model): #Streamlit Local
         vid_cap = cv2.VideoCapture(0)  # local camera
         st_count = st.empty()
         st_frame = st.empty()
-        st.text("Hahahhahaha123")
-        st.write("dsadasdas1234354356345645")
 
         while not flag:
             while vid_cap.isOpened():

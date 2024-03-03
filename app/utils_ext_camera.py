@@ -152,6 +152,9 @@ def infer_uploaded_webcam(conf, model):      #Streamlit Local
     :param model: An instance of the `YOLOv8` class containing the YOLOv8 model.
     :return: None
     """
+    st.text("Hahahhahaha")
+    st.write("Local - External Camera")
+
     try:
         flag = st.button(
             label="Stop running"
