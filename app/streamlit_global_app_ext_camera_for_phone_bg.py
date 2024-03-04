@@ -29,7 +29,7 @@ st.image(title_image, use_column_width=True)
 # sidebar
 st.sidebar.header("Model Config")
 model = YOLO('yolov8s.pt')    #Test this to run on phone
-model = YOLO('best_bg.pt')
+model = YOLO('best_larger_background.pt')
 
 # image/video options
 st.sidebar.header("Input Config")
