@@ -12,6 +12,8 @@ from PIL import Image
 #     initial_sidebar_state="expanded"
 #     )
 
+
+
 st.set_page_config(
     page_title="Fall Detector",
     # page_icon=":abc:",
@@ -29,7 +31,7 @@ st.image(title_image, use_column_width=True)
 # sidebar
 st.sidebar.header("Model Config")
 # model = YOLO('yolov8s.pt')
-model = YOLO('best.pt')
+model = YOLO('best_background.pt')
 
 # image/video options
 st.sidebar.header("Input Config")
